@@ -1,63 +1,61 @@
 ============================================================
- J.A.R.V.I.S. — Guia rápido de instalação
+ J.A.R.V.I.S. — Guia SIMPLES
 ============================================================
 
-Você tem 3 formas de usar o JARVIS. Escolha a que preferir.
+Você NÃO precisa saber programar. Escolha UMA das opções:
 
 ------------------------------------------------------------
- OPÇÃO 1 — USAR AGORA, SEM INSTALAR NADA (mais fácil)
+ ★ OPÇÃO MAIS FÁCIL — usa AGORA, sem instalar nada
 ------------------------------------------------------------
- Arquivo:            dist\JARVIS.html
- Como usar:          dê DUPLO CLIQUE no arquivo. Ele abre no navegador.
- Requisitos:         nada (só internet para a IA).
- Lembrete:           ao abrir, coloque sua API key na engrenagem
-                     (Groq / Rota da IA = "Auto" ou "Via proxy CORS").
+ 1) Ache o arquivo:  JARVIS.html
+ 2) Dê DUPLO CLIQUE nele  (abre no navegador)
+ 3) Clique na ENGrenagem (⚙️, canto superior direito)
+ 4) Provedor: Groq  |  Cole sua chave (começa com gsk_)
+ 5) Rota da IA: Auto   ->  Salvar
+ 6) Pronto! Fale ou digite com o JARVIS.
+
+ NÃO precisa instalar Node, NÃO precisa de nada.
+ Servidor nenhum: o navegador faz tudo.
 
 ------------------------------------------------------------
- OPÇÃO 2 — GERAR O JARVIS.EXE E O INSTALADOR (com ícone)
+ ★ OPÇÃO 2 — Instalar no computador (automático)
 ------------------------------------------------------------
- O .exe embute tudo: abre o navegador sozinho e funciona sem
- instalar Node.js no computador. Inclui o ícone do reator.
+ O arquivo  Instalar-JARVIS.bat  faz TUDO sozinho:
 
- Passos (no Windows):
-  1. Instale o Node.js 18+  ->  https://nodejs.org
-  2. Dê DUPLO CLIQUE em  build-all.bat   (ou build-exe.bat p/ só o .exe)
-  3. Aguarde (na 1ª vez baixa o runtime e demora alguns minutos)
-  4. Resultados em  dist\ :
-       - jarvis.exe            (executável simples)
-       - JARVIS-Setup.exe      (instalador com atalhos e desinstalador)
-  5. Distribua o  JARVIS-Setup.exe  — de duplo clique para instalar.
+ 1) Dê DUPLO CLIQUE em:  Instalar-JARVIS.bat
+ 2) Ele baixa o que precisa e gera o JARVIS (pode demorar
+    alguns minutos na 1a vez — tenha paciência).
+ 3) No final ele cria:
+       - dist\jarvis.exe  (o programa)
+       - dist\JARVIS-Setup.exe  (instalador, se o NSIS baixou)
+       - um atalho "JARVIS" no Desktop
+ 4) Para INSTALAR de vez, dê duplo clique em JARVIS-Setup.exe
+    e siga o assistente (cria atalhos no Menu Iniciar e Desktop).
 
- -> Instalador cria atalhos no Menu Iniciar, Desktop e um desinstalador.
- -> O instalador usa NSIS (https://nsis.sourceforge.io/download).
-    Se o NSIS não estiver instalado, o build exibe instruções.
-
- Na 1ª execução, coloque sua API key na engrenagem
- (Groq / Rota da IA = "Pelo servidor"). Ela fica salva no navegador.
+ Só precisa de internet e permissão para instalar.
 
 ------------------------------------------------------------
- OPÇÃO 3 — RODAR COM NODE (sem gerar o .exe)
+ ★ OPÇÃO 3 — Rodar com Node (para quem já tem)
 ------------------------------------------------------------
-  1. Instale o Node.js 18+  ->  https://nodejs.org
-  2. Dê DUPLO CLIQUE em  start.bat   (ou rodar "npm start")
-  3. Abra  http://localhost:3000
+ Dê duplo clique em  start.bat   e abra  http://localhost:3000
 
 ------------------------------------------------------------
- CONFIGURAR A API KEY (Groq)
+ CONFIGURAR A CHAVE (sempre a mesma coisa)
 ------------------------------------------------------------
-  - Clique na engrenagem (canto superior direito)
-  - Provedor: Groq
-  - Cole sua chave (começa com gsk_)
-  - Rota da IA: escolha conforme o modo
-  - Salvar
+ - Clique na engrenagem (⚙️)
+ - Provedor: Groq
+ - Cole a chave  gsk_...
+ - Rota da IA: Auto (ou "Pelo servidor" se rodar com Node)
+ - Salvar
 
-  A chave fica salva APENAS no seu navegador (localStorage).
-  NUNCA é enviada/gravada em lugar algum além do provedor de IA.
+ A chave fica guardada SÓ no seu navegador. Não vai pra lugar
+ nenhum além do provedor de IA (Groq).
 
 ------------------------------------------------------------
  SEGURANÇA
 ------------------------------------------------------------
-  - O arquivo .env (com sua chave) NÃO é distribuído; use .env.example.
-  - No modo "Via proxy CORS" a chave passa por um serviço de terceiro,
-    por isso prefira "Pelo servidor" (opção 2/3) para uso sério.
+ - Nenhum arquivo de download contém sua chave.
+ - No modo "Via proxy CORS" a chave passa por um serviço de
+   terceiro: ok para uso pessoal, prefira "Pelo servidor"
+   para uso sério.
 ============================================================
