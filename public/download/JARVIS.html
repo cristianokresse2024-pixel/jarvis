@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<link rel="icon" type="image/png" href="data:image/png;base64,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" />
+<style>
+:root {
+  --bg: #04060d;
+  --bg-2: #070b16;
+  --panel: rgba(10, 16, 30, 0.55);
+  --panel-border: rgba(64, 180, 255, 0.22);
+  --cyan: #3fd0ff;
+  --cyan-strong: #6be4ff;
+  --blue: #2a7bff;
+  --amber: #ffb346;
+  --red: #ff4d5e;
+  --text: #cfe6ff;
+  --text-dim: #7da3c4;
+  --mono: 'Share Tech Mono', monospace;
+  --font: 'Rajdhani', 'Segoe UI', system-ui, sans-serif;
+  --display: 'Orbitron', 'Rajdhani', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 70% -10%, rgba(42, 123, 255, 0.15), transparent 60%),
+    radial-gradient(900px 700px at -10% 110%, rgba(63, 208, 255, 0.10), transparent 55%),
+    linear-gradient(180deg, var(--bg-2), var(--bg));
+  overflow: hidden;
+}
+
+/* ---------- scanlines overlay ---------- */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+/* ---------- topbar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--panel-border);
+  position: relative;
+}
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  box-shadow: 0 0 12px rgba(63, 208, 255, 0.6), inset 0 0 8px rgba(63, 208, 255, 0.5);
+  position: relative;
+}
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--cyan-strong), rgba(63, 208, 255, 0.1));
+}
+.brand-name {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 1.25rem;
+  color: var(--cyan-strong);
+  text-shadow: 0 0 14px rgba(63, 208, 255, 0.6);
+}
+.brand-sub {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+.stat-label {
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  display: inline-block;
+  margin-right: 6px;
+  animation: pulse 2s infinite;
+}
+.status-dot.offline {
+  background: var(--amber);
+  box-shadow: 0 0 10px var(--amber);
+}
+.status-text {
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  color: var(--cyan-strong);
+}
+.mono {
+  font-family: var(--mono);
+  font-size: 0.86rem;
+  color: var(--text);
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.icon-btn {
+  background: transparent;
+  border: 1px solid var(--panel-border);
+  color: var(--cyan);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+a.icon-btn {
+  text-decoration: none;
+}
+.icon-btn:hover {
+  box-shadow: 0 0 14px rgba(63, 208, 255, 0.35);
+  border-color: var(--cyan);
+}
+.icon-btn.ghost {
+  border: none;
+  color: var(--text-dim);
+}
+
+/* ---------- layout ---------- */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  flex: 1;
+  min-height: 0;
+  padding: 18px 4px;
+}
+
+.left-panel,
+.right-panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 22px 18px;
+}
+
+/* reactor */
+.reactor-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.reactor {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+.reactor .ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(63, 208, 255, 0.5);
+  inset: 0;
+}
+.reactor .ring-mid { inset: 22px; border-color: rgba(63, 208, 255, 0.35); border-style: dashed; animation: spin 14s linear infinite; }
+.reactor .ring-inner { inset: 44px; border-color: rgba(255, 179, 70, 0.35); }
+.reactor .core {
+  position: absolute;
+  inset: 62px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fff, var(--cyan-strong) 35%, rgba(63, 208, 255, 0.15) 75%, transparent);
+  box-shadow: 0 0 40px rgba(63, 208, 255, 0.8), 0 0 90px rgba(63, 208, 255, 0.4);
+  transition: 0.3s;
+}
+.spinner {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: spin 3s linear infinite;
+}
+.spinner-dash {
+  stroke: var(--cyan);
+  stroke-width: 3;
+  fill: none;
+  stroke-dasharray: 30 160;
+  opacity: 0.8;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.reactor.listening .core {
+  background: radial-gradient(circle at 50% 45%, #fff, var(--amber) 30%, rgba(255, 179, 70, 0.4) 65%, transparent);
+  box-shadow: 0 0 50px rgba(255, 179, 70, 0.9), 0 0 110px rgba(255, 179, 70, 0.5);
+}
+.reactor.speaking .core {
+  animation: talk 0.8s ease-in-out infinite;
+}
+@keyframes talk {
+  0%, 100% { box-shadow: 0 0 30px rgba(63, 208, 255, 0.7), 0 0 70px rgba(63, 208, 255, 0.35); }
+  50% { box-shadow: 0 0 60px rgba(63, 208, 255, 1), 0 0 130px rgba(63, 208, 255, 0.7); }
+}
+.reactor.thinking .spinner { animation-duration: 0.8s; }
+.reactor-status {
+  font-family: var(--display);
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  color: var(--cyan-strong);
+}
+
+/* voice panel */
+.voice-panel {
+  border-top: 1px solid var(--panel-border);
+  border-bottom: 1px solid var(--panel-border);
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.voice-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+}
+.voice-tag {
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.66rem;
+}
+.level-bar {
+  height: 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+}
+.level-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan), var(--amber));
+  transition: width 0.08s linear;
+}
+
+/* quick actions */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.panel-title {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: var(--cyan-strong);
+  margin-bottom: 4px;
+}
+.chip {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  transition: 0.18s;
+}
+.chip:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(63, 208, 255, 0.25);
+  transform: translateX(3px);
+}
+
+/* ---------- right panel / chat ---------- */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.chat {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(63, 208, 255, 0.4) transparent;
+}
+.chat::-webkit-scrollbar { width: 8px; }
+.chat::-webkit-scrollbar-thumb { background: rgba(63, 208, 255, 0.35); border-radius: 8px; }
+
+.welcome {
+  margin: auto;
+  text-align: center;
+  max-width: 520px;
+  position: relative;
+  padding: 20px;
+}
+.welcome h1 {
+  font-family: var(--display);
+  letter-spacing: 2px;
+  color: var(--cyan-strong);
+  text-shadow: 0 0 18px rgba(63, 208, 255, 0.5);
+  font-weight: 500;
+}
+.welcome p { color: var(--text-dim); line-height: 1.6; }
+.welcome-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(63, 208, 255, 0.12), transparent 70%);
+  z-index: -1;
+}
+
+/* message bubbles */
+.msg {
+  display: flex;
+  gap: 12px;
+  max-width: 85%;
+  animation: rise 0.3s ease;
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.msg.user { align-self: flex-end; flex-direction: row-reverse; }
+.msg.assistant { align-self: flex-start; }
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 0.8rem;
+  background: radial-gradient(circle, var(--cyan-strong), rgba(63, 208, 255, 0.2));
+  color: #04121d;
+  box-shadow: 0 0 14px rgba(63, 208, 255, 0.5);
+}
+.msg.user .avatar {
+  background: radial-gradient(circle, var(--amber), rgba(255, 179, 70, 0.25));
+}
+.bubble {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.msg.user .bubble {
+  background: rgba(42, 123, 255, 0.16);
+  border-color: rgba(42, 123, 255, 0.4);
+}
+.bubble .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background: var(--cyan);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: blink 0.9s steps(2) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- composer ---------- */
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid var(--panel-border);
+  background: rgba(5, 8, 15, 0.6);
+}
+.input {
+  flex: 1;
+  resize: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.02rem;
+  padding: 12px 14px;
+  outline: none;
+  min-height: 48px;
+  max-height: 140px;
+  line-height: 1.4;
+}
+.input:focus { border-color: var(--cyan); box-shadow: 0 0 14px rgba(63, 208, 255, 0.2); }
+.input::placeholder { color: var(--text-dim); }
+
+.mic-btn, .send-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: 0.2s;
+}
+.mic-btn {
+  background: transparent;
+  border: 2px solid var(--cyan);
+  color: var(--cyan);
+}
+.mic-btn:hover { box-shadow: 0 0 16px rgba(63, 208, 255, 0.5); }
+.mic-btn.recording {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  animation: pulse 1s infinite;
+}
+.mic-btn.busy { opacity: 0.5; cursor: not-allowed; }
+.send-btn {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: #04121d;
+}
+.send-btn:hover { transform: translateY(-2px); }
+.send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- modal ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 4, 9, 0.72);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+.modal {
+  width: min(520px, 92vw);
+  background: linear-gradient(160deg, var(--bg-2), #0a1220);
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 0 60px rgba(63, 208, 255, 0.15);
+  animation: rise 0.25s ease;
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.modal-head h2 {
+  font-family: var(--display);
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: var(--cyan-strong);
+  margin: 0;
+}
+.field { margin-bottom: 16px; display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 0.8rem; letter-spacing: 1px; color: var(--text); }
+.field input, .field select {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  outline: none;
+}
+.field input:focus, .field select:focus { border-color: var(--cyan); }
+.hint { margin: 4px 0 0; font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+.hint .mono { color: var(--cyan); }
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.toggle input { display: none; }
+.toggle .toggle-label { position: relative; padding-left: 34px; }
+.toggle .toggle-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--panel-border);
+  transition: 0.2s;
+}
+.toggle .toggle-label::after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: 0.2s;
+}
+.toggle input:checked + .toggle-label::before { background: rgba(63, 208, 255, 0.4); border-color: var(--cyan); }
+.toggle input:checked + .toggle-label::after { left: 14px; background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+.toggle-sub {
+  display: block;
+  margin-left: 34px;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 22px;
+}
+.btn {
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-family: var(--font);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--panel-border);
+  transition: 0.2s;
+}
+.btn.ghost { background: transparent; color: var(--text); }
+.btn.ghost:hover { border-color: var(--cyan); color: var(--cyan-strong); }
+.btn.primary {
+  background: linear-gradient(135deg, var(--blue), var(--cyan));
+  color: #04121d;
+  border: none;
+}
+.btn.primary:hover { box-shadow: 0 0 18px rgba(63, 208, 255, 0.5); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .left-panel { flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .reactor-wrap { flex: 0 0 auto; }
+  .voice-panel { flex: 1; min-width: 180px; }
+  .quick-actions { width: 100%; }
+  .brand-sub { display: none; }
+}
+
+</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J.A.R.V.I.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet"
+  /></head>
+<body>
+  <div class="scanlines"></div>
+
+  <div class="app">
+    <!-- ===================== HEADER ===================== -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <span class="brand-name">J.A.R.V.I.S.</span>
+        <span class="brand-sub">Just A Rather Very Intelligent System</span>
+      </div>
+
+      <div class="topbar-right">
+        <div class="stat">
+          <span class="stat-label">STATUS</span>
+          <span id="statusDot" class="status-dot"></span>
+          <span id="statusText" class="status-text">ONLINE</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">TEMPO</span>
+          <span id="clock" class="mono">--:--</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">DATA</span>
+          <span id="date" class="mono">--/--/----</span>
+        </div>
+        <a class="icon-btn" href="/download.html" title="Baixar o JARVIS para o seu computador">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </a>
+        <button id="settingsBtn" class="icon-btn" title="Configurações (API key)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="layout">
+      <!-- LEFT: arc reactor + voice status -->
+      <aside class="left-panel">
+        <div class="reactor-wrap">
+          <div class="reactor" id="reactor">
+            <div class="ring ring-outer"></div>
+            <div class="ring ring-mid"></div>
+            <div class="ring ring-inner"></div>
+            <div class="core"></div>
+            <svg class="spinner" viewBox="0 0 200 200">
+              <circle class="spinner-dash" cx="100" cy="100" r="92" />
+            </svg>
+          </div>
+          <div class="reactor-status" id="reactorStatus">STANDBY</div>
+        </div>
+
+        <div class="voice-panel">
+          <div class="voice-row">
+            <span class="voice-tag">MICROFONE</span>
+            <span id="micState" class="mono">Ocioso</span>
+          </div>
+          <div class="voice-row">
+            <span class="voice-tag">VOZ</span>
+            <span id="voiceState" class="mono">Pronta</span>
+          </div>
+          <div class="level-bar" id="levelBar"><span class="level-fill" id="levelFill"></span></div>
+        </div>
+
+        <div class="quick-actions">
+          <span class="panel-title">AÇÕES RÁPIDAS</span>
+          <button class="chip" data-cmd="hora">🕐 Que horas são?</button>
+          <button class="chip" data-cmd="data">📅 Data de hoje</button>
+          <button class="chip" data-cmd="piada">😂 Uma piada</button>
+          <button class="chip" data-cmd="google">🌐 Abrir Google</button>
+          <button class="chip" data-cmd="limpar">🧹 Limpar conversa</button>
+        </div>
+      </aside>
+
+      <!-- RIGHT: chat -->
+      <section class="right-panel">
+        <div class="chat" id="chat">
+          <div class="welcome" id="welcome">
+            <div class="welcome-glow"></div>
+            <h1>Bem-vindo, senhor.</h1>
+            <p>
+              O J.A.R.V.I.S. está pronto para servi-lo. Fale comigo através do
+              microfone ou digite abaixo. Configure sua OpenAI API key para
+              destravar a inteligência completa.
+            </p>
+          </div>
+        </div>
+
+        <div class="composer">
+          <button id="micBtn" class="mic-btn" title="Falar">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+              <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"></path>
+              <path d="M19 11a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.92V20H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2h-3v-2.08A7 7 0 0 0 19 11z"></path>
+            </svg>
+          </button>
+          <textarea
+            id="input"
+            class="input"
+            rows="1"
+            placeholder="Fale ou escreva um comando, senhor..."
+            autocomplete="off"
+          ></textarea>
+          <button id="sendBtn" class="send-btn" title="Enviar">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+            </svg>
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================== SETTINGS MODAL ===================== -->
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Configurações</h2>
+        <button id="closeSettings" class="icon-btn ghost">✕</button>
+      </div>
+
+      <div class="field">
+        <label for="provider">Provedor de IA</label>
+        <select id="provider">
+          <option value="groq">Groq (rápido)</option>
+          <option value="openai">OpenAI</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="apiKey">API Key</label>
+        <input id="apiKey" type="password" placeholder="gsk_... ou sk-..." autocomplete="off" />
+        <p class="hint">Fica salva apenas no seu navegador (localStorage) e enviada direto à API. Crie uma na <span class="mono">console.groq.com</span> (Groq) ou <span class="mono">platform.openai.com</span> (OpenAI).</p>
+      </div>
+
+      <div class="field">
+        <label for="model">Modelo</label>
+        <select id="model">
+          <optgroup label="Groq">
+            <option value="openai/gpt-oss-120b">gpt-oss-120b (inteligente)</option>
+            <option value="openai/gpt-oss-20b">gpt-oss-20b (rápido)</option>
+            <option value="qwen/qwen3.6-27b">qwen3.6-27b</option>
+            <option value="meta-llama/llama-4-scout-17b-16e-instruct">llama-4-scout</option>
+          </optgroup>
+          <optgroup label="OpenAI">
+            <option value="gpt-4o-mini">gpt-4o-mini (rápido)</option>
+            <option value="gpt-4o">gpt-4o (inteligente)</option>
+            <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="voiceSelect">Voz do JARVIS</label>
+        <select id="voiceSelect"></select>
+      </div>
+
+      <div class="field">
+        <label for="connectionMode">Rota da IA</label>
+        <select id="connectionMode">
+          <option value="auto">Auto (recomendado)</option>
+          <option value="direct">Direto do navegador</option>
+          <option value="proxy">Via proxy CORS (preview)</option>
+          <option value="server">Pelo servidor (modo local)</option>
+        </select>
+        <p class="hint">
+          <b>Auto</b> tenta direto, depois proxy e depois servidor.
+          <b>Proxy CORS</b> funciona no preview, mas a API key trafega por um serviço de terceiro.
+          <b>Servidor</b> é ideal ao rodar aqui na sua máquina.
+        </p>
+      </div>
+
+      <label class="toggle">
+        <input type="checkbox" id="voiceEnabled" checked />
+        <span class="toggle-label">Respostas faladas</span>
+      </label>
+
+      <label class="toggle">
+        <input type="checkbox" id="autoListen" checked />
+        <span class="toggle-label">Continuar ouvindo após responder</span>
+      </label>
+
+      <div class="modal-actions">
+        <button id="testVoice" class="btn ghost">Testar voz</button>
+        <button id="saveSettings" class="btn primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+<script>
+  // standalone: sem servidor -> rota padrão via proxy CORS
+  try {
+    if (!localStorage.getItem('jarvis_connectionMode')) {
+      localStorage.setItem('jarvis_connectionMode', 'proxy');
+    }
+  } catch (e) {}
+</script>
+<script>
+/* ============================================================
+   J.A.R.V.I.S. — app.js
+   Voz, chat com streaming via OpenAI e configurações.
+   ============================================================ */
+
+const $ = (id) => document.getElementById(id);
+
+const els = {
+  chat: $('chat'),
+  welcome: $('welcome'),
+  input: $('input'),
+  sendBtn: $('sendBtn'),
+  micBtn: $('micBtn'),
+  micrometer: $('micState'),
+  voiceState: $('voiceState'),
+  levelFill: $('levelFill'),
+  reactor: $('reactor'),
+  reactorStatus: $('reactorStatus'),
+  statusText: $('statusText'),
+  statusDot: $('statusDot'),
+  clock: $('clock'),
+  date: $('date'),
+  settingsBtn: $('settingsBtn'),
+  settingsModal: $('settingsModal'),
+  closeSettings: $('closeSettings'),
+  provider: $('provider'),
+  apiKey: $('apiKey'),
+  model: $('model'),
+  voiceSelect: $('voiceSelect'),
+  voiceEnabled: $('voiceEnabled'),
+  autoListen: $('autoListen'),
+  connectionMode: $('connectionMode'),
+  saveSettings: $('saveSettings'),
+  testVoice: $('testVoice'),
+};
+
+const SYSTEM_PROMPT = [
+  'Você é o J.A.R.V.I.S. (Just A Rather Very Intelligent System),',
+  'o assistente pessoal do Homem de Ferro, Tony Stark.',
+  'Seja prestativo, inteligente, conciso e elegante, com um toque',
+  'de personalidade divertida e sofisticada. Trate o usuário como "senhor".',
+  'Responda em português do Brasil, salvo se o usuário pedir outra língua.',
+  'Prefira respostas objetivas e bem estruturadas.',
+].join(' ');
+
+/* ------------------- state ------------------- */
+let provider = localStorage.getItem('jarvis_provider') || 'groq';
+let apiKey = localStorage.getItem('jarvis_apiKey') || '';
+let model = localStorage.getItem('jarvis_model') || 'openai/gpt-oss-120b';
+let voiceURI = localStorage.getItem('jarvis_voice') || '';
+let voiceEnabled = localStorage.getItem('jarvis_voiceEnabled') !== '0';
+let autoListen = localStorage.getItem('jarvis_autoListen') !== '0';
+// Rota da IA: 'auto' | 'direct' | 'proxy' | 'server'
+let connectionMode = localStorage.getItem('jarvis_connectionMode') || 'auto';
+
+let history = []; // {role, content}
+let recording = false;
+let isProcessing = false;
+let levelTimer = null;
+
+let voices = [];
+let recognition = null;
+let recognitionSupported = false;
+
+/* ------------------- clock ------------------- */
+function tickClock() {
+  const now = new Date();
+  els.clock.textContent = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  els.date.textContent = now.toLocaleDateString('pt-BR');
+}
+tickClock();
+setInterval(tickClock, 1000);
+
+/* ------------------- reactor state ------------------- */
+function setReactor(state, label) {
+  els.reactor.classList.toggle('listening', state === 'listening');
+  els.reactor.classList.toggle('speaking', state === 'speaking');
+  els.reactor.classList.toggle('thinking', state === 'thinking');
+  els.reactorStatus.textContent =
+    state === 'listening' ? 'OUVINDO' :
+    state === 'speaking' ? 'FALANDO' :
+    state === 'thinking' ? 'PROCESSANDO' : 'STANDBY';
+}
+
+function setBusy(busy) {
+  isProcessing = busy;
+  els.micBtn.classList.toggle('busy', busy);
+  els.sendBtn.disabled = busy;
+}
+
+/* ------------------- chat bubbles ------------------- */
+function removeWelcome() {
+  if (els.welcome) els.welcome.remove();
+}
+
+function addBubble(role, text = '', streaming = false) {
+  removeWelcome();
+  const wrap = document.createElement('div');
+  wrap.className = 'msg ' + role;
+
+  const avatar = document.createElement('div');
+  avatar.className = 'avatar';
+  avatar.textContent = role === 'user' ? 'VOCÊ' : 'JARVIS';
+
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble';
+  const span = document.createElement('span');
+  span.textContent = text;
+  bubble.appendChild(span);
+  let cursor = null;
+  if (streaming) {
+    cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    bubble.appendChild(cursor);
+  }
+
+  wrap.appendChild(avatar);
+  wrap.appendChild(bubble);
+  els.chat.appendChild(wrap);
+  scrollBottom();
+
+  return {
+    setText(t) {
+      span.textContent = t;
+      scrollBottom();
+    },
+    finish(t) {
+      span.textContent = t;
+      if (cursor) cursor.remove();
+      scrollBottom();
+    },
+  };
+}
+
+function scrollBottom() {
+  els.chat.scrollTop = els.chat.scrollHeight;
+}
+
+/* ------------------- local commands ------------------- */
+function normalize(t) {
+  return t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function handleLocal(text) {
+  const t = normalize(text);
+
+  if (/limpar|reset|recarregar|limpa|zera/.test(t) && history.length) {
+    return { clear: true };
+  }
+
+  if (/que hora(s)?\b|hora(s)? agora|que horas sao/.test(t)) {
+    return { reply: `São ${new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })} em ponto, senhor.` };
+  }
+
+  if (/que dia|data de hoje|que dia e hoje|data hoje|qual a data/.test(t)) {
+    return { reply: `Hoje é ${new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}.` };
+  }
+
+  if (/abrir google|abre o google/.test(t)) {
+    window.open('https://www.google.com', '_blank');
+    return { reply: 'Abrindo o Google para o senhor.' };
+  }
+
+  return null;
+}
+
+/* ------------------- IA streaming ------------------- */
+const PROVIDER_ENDPOINTS = {
+  groq: 'https://api.groq.com/openai/v1/chat/completions',
+  openai: 'https://api.openai.com/v1/chat/completions',
+};
+
+// Lê um response body em stream de Server-Sent Events (SSE) da Groq/OpenAI.
+async function readSSE(response, onDelta) {
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  let buffer = '';
+  let full = '';
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+
+    let nl;
+    while ((nl = buffer.indexOf('\n')) >= 0) {
+      const line = buffer.slice(0, nl).trim();
+      buffer = buffer.slice(nl + 1);
+      if (!line.startsWith('data:')) continue;
+      const data = line.slice(5).trim();
+      if (!data || data === '[DONE]') continue;
+      try {
+        const j = JSON.parse(data);
+        if (j.delta) {
+          full += j.delta;
+          onDelta(full);
+        }
+        if (j.error) throw new Error(j.error);
+      } catch (err) {
+        if (err.message && err.message !== 'Unexpected end of JSON input') throw err;
+      }
+    }
+  }
+  return full;
+}
+
+// Chamada DIRETA do navegador para o provedor. É o que funciona no preview,
+// pois o sandbox do servidor não tem internet, mas o SEU navegador tem.
+// Observação: apenas funciona se o provedor permitir CORS (Groq/OpenAI aceitam).
+async function streamDirect(apiMessages, onDelta) {
+  const endpoint = PROVIDER_ENDPOINTS[provider];
+  let res;
+  try {
+    res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        messages: apiMessages,
+        temperature: 0.7,
+        stream: true,
+      }),
+    });
+  } catch (e) {
+    // Falha de rede / CORS do navegador -> sinaliza para tentar o proxy do servidor.
+    throw new Error('NETWORK');
+  }
+
+  if (!res.ok) {
+    let msg = `Erro da API (status ${res.status}).`;
+    try {
+      const j = await res.json();
+      msg = j?.error?.message || msg;
+    } catch {}
+    if (res.status === 401) msg = 'API key inválida ou expirada. Verifique nas configurações.';
+    if (res.status === 404 || res.status === 400) msg = 'Modelo inválido para este provedor. Selecione outro modelo nas configurações.';
+    throw new Error(msg);
+  }
+  return readSSE(res, onDelta);
+}
+
+// Chamada via proxy do servidor (equivale ao provedor, mas passa pelo Node).
+// Útil quando o ambiente de hospedagem do servidor tem internet (ex.: rodando local).
+async function streamViaServer(apiMessages, onDelta) {
+  let res;
+  try {
+    res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ provider, apiKey, model, messages: apiMessages }),
+    });
+  } catch (e) {
+    throw new Error('Sem conexão com o servidor JARVIS.');
+  }
+
+  if (!res.ok) {
+    let msg = 'Erro na comunicação com a API.';
+    try {
+      const j = await res.json();
+      msg = j.error || msg;
+    } catch {}
+    throw new Error(msg);
+  }
+  return readSSE(res, onDelta);
+}
+
+// Chamada via proxy CORS público. É o que permite a IA funcionar no preview:
+// o navegador chama um relay que tem internet e devolve os cabeçalhos CORS.
+// Aviso: a API key trafega por um serviço de terceiro, por isso é opcional.
+const CORS_PROXIES = [
+  'https://api.allorigins.win/raw?url={url}',
+  'https://api.codetabs.com/v1/proxy?quest={url}',
+  'https://corsproxy.io/?{url}',
+];
+
+async function streamViaProxy(apiMessages, onDelta, index = 0) {
+  if (index >= CORS_PROXIES.length) throw new Error('PROXY_FAILED');
+  const endpoint = PROVIDER_ENDPOINTS[provider];
+  const proxyUrl = CORS_PROXIES[index].replace('{url}', encodeURIComponent(endpoint));
+
+  let res;
+  try {
+    res = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        messages: apiMessages,
+        temperature: 0.7,
+        stream: true,
+      }),
+    });
+  } catch (e) {
+    // proxy indisponível -> tenta o próximo
+    return streamViaProxy(apiMessages, onDelta, index + 1);
+  }
+
+  if (!res.ok) {
+    // proxy pode ter rejeitado -> tenta o próximo
+    return streamViaProxy(apiMessages, onDelta, index + 1);
+  }
+
+  const contentType = res.headers.get('content-type') || '';
+  if (contentType.includes('text/html')) {
+    return streamViaProxy(apiMessages, onDelta, index + 1);
+  }
+  return readSSE(res, onDelta);
+}
+
+// Decide a rota conforme a configuração.
+async function streamAnswer(apiMessages, onDelta) {
+  if (connectionMode === 'server') return streamViaServer(apiMessages, onDelta);
+  if (connectionMode === 'direct') return streamDirect(apiMessages, onDelta);
+  if (connectionMode === 'proxy') return streamViaProxy(apiMessages, onDelta);
+
+  // auto: direto -> proxy -> servidor
+  try {
+    return await streamDirect(apiMessages, onDelta);
+  } catch (err) {
+    if (err.message !== 'NETWORK') throw err;
+  }
+  try {
+    return await streamViaProxy(apiMessages, onDelta);
+  } catch (err) {
+    if (err.message !== 'PROXY_FAILED' && err.message !== 'NETWORK') throw err;
+  }
+  return streamViaServer(apiMessages, onDelta);
+}
+
+/* ------------------- send flow ------------------- */
+function sendMessage(raw) {
+  const text = (raw || '').trim();
+  if (!text || isProcessing) return;
+
+  els.input.value = '';
+  addBubble('user', text);
+  history.push({ role: 'user', content: text });
+
+  const local = handleLocal(text);
+  if (local) {
+    if (local.clear) {
+      clearChat();
+      return;
+    }
+    addBubble('assistant', local.reply);
+    history.push({ role: 'assistant', content: local.reply });
+    speak(local.reply);
+    return;
+  }
+
+  setBusy(true);
+  setReactor('thinking');
+  const apiMessages = [{ role: 'system', content: SYSTEM_PROMPT }, ...history];
+  const bubble = addBubble('assistant', '', true);
+
+  streamAnswer(apiMessages, (full) => bubble.setText(full))
+    .then((full) => {
+      bubble.finish(full);
+      history.push({ role: 'assistant', content: full });
+      speak(full);
+      setBusy(false);
+      setReactor('idle');
+      if (autoListen) queueListening();
+    })
+    .catch((err) => {
+      bubble.finish(`⚠️ ${err.message}`);
+      setBusy(false);
+      setReactor('idle');
+      if (autoListen) queueListening();
+    });
+}
+
+function clearChat() {
+  els.chat.querySelectorAll('.msg').forEach((m) => m.remove());
+  history = [];
+  setReactor('idle');
+  const w = document.createElement('div');
+  w.className = 'welcome';
+  w.innerHTML = '<h1>Conversa limpa.</h1><p>Pronto para novos comandos, senhor.</p>';
+  els.chat.appendChild(w);
+}
+
+/* ------------------- speech synthesis ------------------- */
+function loadVoices() {
+  voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  populateVoiceSelect();
+  if (!voiceURI && voices.length) {
+    const pt = voices.find((v) => v.lang && v.lang.toLowerCase().startsWith('pt'));
+    if (pt) voiceURI = pt.voiceURI;
+  }
+  els.voiceState.textContent = voices.length ? 'Pronta' : 'Indisponível';
+}
+
+function populateVoiceSelect() {
+  const pt = voices.filter((v) => v.lang && v.lang.toLowerCase().startsWith('pt'));
+  const rest = voices.filter((v) => !(v.lang && v.lang.toLowerCase().startsWith('pt')));
+  const optList = [...pt, ...rest];
+
+  els.voiceSelect.innerHTML = '';
+  optList.forEach((v) => {
+    const o = document.createElement('option');
+    o.value = v.voiceURI;
+    o.textContent = `${v.name} (${v.lang})`;
+    els.voiceSelect.appendChild(o);
+  });
+  if (voiceURI) els.voiceSelect.value = voiceURI;
+  else if (optList.length) els.voiceSelect.selectedIndex = 0;
+  if (!optList.length) {
+    const o = document.createElement('option');
+    o.value = '';
+    o.textContent = 'Nenhuma voz disponível';
+    els.voiceSelect.appendChild(o);
+  }
+}
+
+function speak(text) {
+  if (!voiceEnabled || !window.speechSynthesis) return;
+  const clean = text.replace(/https?:\/\/\S+/g, 'link').replace(/[#*_`]/g, '');
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(clean);
+  u.lang = 'pt-BR';
+  u.rate = 1.02;
+  u.pitch = 0.95;
+  const v =
+    voices.find((vv) => vv.voiceURI === voiceURI) ||
+    voices.find((vv) => vv.lang && vv.lang.toLowerCase().startsWith('pt')) ||
+    null;
+  if (v) u.voice = v;
+  u.onstart = () => setReactor('speaking');
+  u.onend = () => {
+    setReactor('idle');
+    if (autoListen) queueListening();
+  };
+  u.onerror = () => setReactor('idle');
+  speechSynthesis.speak(u);
+}
+
+/* ------------------- speech recognition ------------------- */
+function initRecognition() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    recognitionSupported = false;
+    els.micrometer.textContent = 'Indisponível';
+    els.micBtn.title = 'Reconhecimento de fala não suportado neste navegador';
+    els.micBtn.style.opacity = '0.4';
+    return;
+  }
+  recognitionSupported = true;
+  recognition = new SR();
+  recognition.lang = 'pt-BR';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = () => {
+    recording = true;
+    els.micBtn.classList.add('recording');
+    setReactor('listening');
+    levelTimer = setInterval(() => {
+      els.levelFill.style.width = `${15 + Math.random() * 85}%`;
+    }, 90);
+  };
+
+  recognition.onresult = (e) => {
+    let interim = '';
+    let final = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const tr = e.results[i];
+      if (tr.isFinal) final += tr[0].transcript;
+      else interim += tr[0].transcript;
+    }
+    if (final) {
+      els.input.value = final;
+      stopListening();
+      sendMessage(final);
+      final = '';
+    } else {
+      els.input.value = interim;
+    }
+  };
+
+  recognition.onerror = (e) => {
+    if (e.error === 'not-allowed') {
+      els.micrometer.textContent = 'Permição negada';
+    }
+  };
+
+  recognition.onend = () => {
+    recording = false;
+    els.micBtn.classList.remove('recording');
+    if (levelTimer) { clearInterval(levelTimer); levelTimer = null; }
+    els.levelFill.style.width = '0%';
+    if (!isProcessing && !speechSynthesis.speaking) setReactor('idle');
+  };
+}
+
+function startListening() {
+  if (!recognitionSupported || recording || isProcessing) return;
+  try {
+    recognition.start();
+  } catch (e) {
+    /* already started */
+  }
+}
+
+function stopListening() {
+  if (recognition && recording) recognition.stop();
+}
+
+function queueListening() {
+  // small delay so TTS finishes announcing state before opening the mic again
+  setTimeout(() => {
+    if (!recording && !isProcessing && !speechSynthesis.speaking) startListening();
+  }, 400);
+}
+
+/* ------------------- settings ------------------- */
+function openSettings() {
+  els.provider.value = provider;
+  els.apiKey.value = apiKey;
+  els.model.value = model;
+  els.voiceEnabled.checked = voiceEnabled;
+  els.autoListen.checked = autoListen;
+  els.connectionMode.value = connectionMode;
+  if (voiceURI) els.voiceSelect.value = voiceURI;
+  els.model.disabled = false;
+  syncModelForProvider();
+  els.settingsModal.hidden = false;
+}
+
+function closeSettings() {
+  els.settingsModal.hidden = true;
+}
+
+function saveSettings() {
+  provider = els.provider.value;
+  apiKey = els.apiKey.value.trim();
+  model = els.model.value;
+  voiceURI = els.voiceSelect.value;
+  voiceEnabled = els.voiceEnabled.checked;
+  autoListen = els.autoListen.checked;
+  connectionMode = els.connectionMode.value;
+
+  localStorage.setItem('jarvis_provider', provider);
+  localStorage.setItem('jarvis_apiKey', apiKey);
+  localStorage.setItem('jarvis_model', model);
+  localStorage.setItem('jarvis_voice', voiceURI);
+  localStorage.setItem('jarvis_voiceEnabled', voiceEnabled ? '1' : '0');
+  localStorage.setItem('jarvis_autoListen', autoListen ? '1' : '0');
+  localStorage.setItem('jarvis_connectionMode', connectionMode);
+
+  els.voiceState.textContent = voiceEnabled ? 'Pronta' : 'Desativada';
+  closeSettings();
+  if (apiKey) {
+    els.statusText.textContent = 'ONLINE';
+    els.statusDot.classList.remove('offline');
+  } else {
+    els.statusText.textContent = 'AGUARDANDO KEY';
+    els.statusDot.classList.add('offline');
+  }
+}
+
+// validate the selection is a model that exists for the chosen provider
+function syncModelForProvider() {
+  const current = els.model.value;
+  els.model.querySelectorAll('optgroup').forEach((og) => {
+    og.style.display = og.label === (provider === 'groq' ? 'Groq' : 'OpenAI') ? '' : 'none';
+  });
+  const anyVisible = Array.from(els.model.options).some((o) => o.value === current && o.closest('optgroup').style.display !== 'none');
+  if (!anyVisible) {
+    // pick first visible option
+    const first = Array.from(els.model.options).find((o) => o.closest('optgroup').style.display !== 'none');
+    if (first) els.model.value = first.value;
+  }
+}
+els.provider.addEventListener('change', () => {
+  provider = els.provider.value;
+  syncModelForProvider();
+});
+
+/* ------------------- wire up ------------------- */
+els.sendBtn.addEventListener('click', () => sendMessage(els.input.value));
+els.input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage(els.input.value);
+  }
+});
+els.micBtn.addEventListener('click', () => {
+  if (recording) stopListening();
+  else startListening();
+});
+
+els.settingsBtn.addEventListener('click', openSettings);
+els.closeSettings.addEventListener('click', closeSettings);
+els.settingsModal.addEventListener('click', (e) => {
+  if (e.target === els.settingsModal) closeSettings();
+});
+els.saveSettings.addEventListener('click', saveSettings);
+els.testVoice.addEventListener('click', () => {
+  voiceURI = els.voiceSelect.value;
+  const keep = voiceEnabled;
+  voiceEnabled = true;
+  speak('Sistemas operacionais online. JARVIS ao seu dispor, senhor.');
+  voiceEnabled = keep;
+});
+
+// quick action chips
+document.querySelectorAll('.chip').forEach((chip) => {
+  chip.addEventListener('click', () => {
+    const cmd = chip.dataset.cmd;
+    if (cmd === 'hora') sendMessage('Que horas são?');
+    else if (cmd === 'data') sendMessage('Que dia é hoje?');
+    else if (cmd === 'piada') sendMessage('Conte uma piada.');
+    else if (cmd === 'google') sendMessage('Abrir Google');
+    else if (cmd === 'limpar') {
+      clearChat();
+      speak('Conversa limpa, senhor.');
+    }
+  });
+});
+
+/* ------------------- init ------------------- */
+if (window.speechSynthesis) {
+  loadVoices();
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+initRecognition();
+
+if (!apiKey) {
+  els.statusText.textContent = 'AGUARDANDO KEY';
+  els.statusDot.classList.add('offline');
+}
+
+// No primeiro uso, escolhe o modo conforme onde está rodando:
+// - localhost (ex.: .exe, npm start) -> "server" (o servidor tem internet)
+// - preview remoto (ex.: *.e2b.app) -> "proxy" (navegador chama via CORS)
+if (!localStorage.getItem('jarvis_connectionMode')) {
+  const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
+  connectionMode = isLocal ? 'server' : 'proxy';
+  localStorage.setItem('jarvis_connectionMode', connectionMode);
+}
+
+</script>
+</body>
+</html>

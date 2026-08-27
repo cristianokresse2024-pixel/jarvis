@@ -173,6 +173,9 @@ body {
   cursor: pointer;
   transition: 0.2s;
 }
+a.icon-btn {
+  text-decoration: none;
+}
 .icon-btn:hover {
   box-shadow: 0 0 14px rgba(63, 208, 255, 0.35);
   border-color: var(--cyan);
