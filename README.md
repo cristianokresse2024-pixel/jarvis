@@ -2,6 +2,8 @@
 
 Assistente pessoal com **voz** e **IA**, inspirado no JARVIS do Homem de Ferro.
 
+> ✨ **Quer um `.exe`?</strong> [Veja "Gerar o JARVIS.exe"](#gerar-o-jarvisexe)
+
 - 🎤 Fale com o assistente (reconhecimento de voz via navegador)
 - 🔊 Respostas faladas (síntese de voz)
 - 🧠 Inteligência real via **OpenAI API** (streaming em tempo real)
@@ -51,6 +53,38 @@ automaticamente.)
 
 > ✅ Na sua máquina o servidor tem internet, então use **Rota da IA = "Pelo servidor"**
 > (ou "Auto") — funciona garantido.
+
+## Gerar o JARVIS.exe
+
+<details>
+<summary>Como gerar (clique para expandir)</summary>
+
+O JARVIS pode virar um **único arquivo `.exe`** (Windows) que embute o Node.js
+e o site — o computador não precisa instalar nada, é só dar duplo clique.
+
+**Passos (na sua máquina, com internet):**
+
+1. Instale o [Node.js](https://nodejs.org) (18+).
+2. Abra o **Prompt de Comando (cmd)** ou o **PowerShell** na pasta do projeto.
+3. Rode:
+
+   - **Windows:** dê duplo clique em `build-exe.bat`
+   - **Linux/macOS:** `./build-exe.sh`
+
+   (Ou manualmente: `npm install` e depois `npx pkg . --targets node22-win-x64 --output dist\jarvis.exe`)
+
+4. O arquivo será criado em **`dist\jarvis.exe`**.
+5. Copie o `jarvis.exe` para qualquer pasta e **dê duplo clique** — ele abre
+   o seu navegador automaticamente.
+
+> ⚠️ O `.exe` gerado **não** contém sua API key. Ao abrir, você configura a
+> Groq na **engrenagem** (Rota da IA = "Pelo servidor") — a chave fica salva
+> no navegador.
+
+> 💡 O exe serve a partir de `localhost`, então o modo de IA "Pelo servidor"
+> já é selecionado automaticamente (o servidor embutido tem internet e fala
+> com a Groq sem atravessar terceiros).
+</details>
 
 ## Rodando no preview (Arena) — sem servidor com internet
 

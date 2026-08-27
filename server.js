@@ -1,6 +1,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import { exec } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -233,6 +234,17 @@ const server = http.createServer((req, res) => {
   res.end('Method Not Allowed');
 });
 
+function openBrowser(url) {
+  if (process.env.JARVIS_NO_OPEN) return;
+  let cmd;
+  if (process.platform === 'win32') cmd = `start "" "${url}"`;
+  else if (process.platform === 'darwin') cmd = `open "${url}"`;
+  else cmd = `xdg-open "${url}"`;
+  exec(cmd, () => {});
+}
+
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`JARVIS online em http://0.0.0.0:${PORT}`);
+  const url = `http://localhost:${PORT}`;
+  console.log(`JARVIS online em ${url}`);
+  openBrowser(url);
 });

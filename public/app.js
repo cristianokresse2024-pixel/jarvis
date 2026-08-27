@@ -638,8 +638,11 @@ if (!apiKey) {
   els.statusDot.classList.add('offline');
 }
 
-// No primeiro uso, sugere o modo proxy (funciona no preview).
+// No primeiro uso, escolhe o modo conforme onde está rodando:
+// - localhost (ex.: .exe, npm start) -> "server" (o servidor tem internet)
+// - preview remoto (ex.: *.e2b.app) -> "proxy" (navegador chama via CORS)
 if (!localStorage.getItem('jarvis_connectionMode')) {
-  connectionMode = 'proxy';
+  const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
+  connectionMode = isLocal ? 'server' : 'proxy';
   localStorage.setItem('jarvis_connectionMode', connectionMode);
 }
