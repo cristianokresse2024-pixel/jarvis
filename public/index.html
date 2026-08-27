@@ -168,11 +168,20 @@
         <select id="voiceSelect"></select>
       </div>
 
-      <label class="toggle">
-        <input type="checkbox" id="useServerProxy" />
-        <span class="toggle-label">Chamar IA pelo servidor (use no modo local)</span>
-        <span class="toggle-sub">Se desligado (padrão), o navegador chama a IA diretamente — recomendado no preview.</span>
-      </label>
+      <div class="field">
+        <label for="connectionMode">Rota da IA</label>
+        <select id="connectionMode">
+          <option value="auto">Auto (recomendado)</option>
+          <option value="direct">Direto do navegador</option>
+          <option value="proxy">Via proxy CORS (preview)</option>
+          <option value="server">Pelo servidor (modo local)</option>
+        </select>
+        <p class="hint">
+          <b>Auto</b> tenta direto, depois proxy e depois servidor.
+          <b>Proxy CORS</b> funciona no preview, mas a API key trafega por um serviço de terceiro.
+          <b>Servidor</b> é ideal ao rodar aqui na sua máquina.
+        </p>
+      </div>
 
       <label class="toggle">
         <input type="checkbox" id="voiceEnabled" checked />

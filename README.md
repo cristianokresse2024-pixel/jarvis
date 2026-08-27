@@ -25,6 +25,42 @@ node server.js
 Abra `http://localhost:3000`. (No preview do Arena, o endereço é mostrado
 automaticamente.)
 
+## Rodando localmente (IA completa, garantida)
+
+1. Instale o [Node.js](https://nodejs.org) (18+).
+2. Crie o arquivo `.env` (ou deixe o script criar a partir de `.env.example`)
+   e cole sua chave:
+   ```env
+   GROQ_API_KEY=gsk_...
+   ```
+3. Inicie:
+
+   **Windows** (duplo clique):
+   ```bat
+   start.bat
+   ```
+   **Linux / macOS**:
+   ```bash
+   ./start.sh
+   ```
+   Ou manualmente:
+   ```bash
+   npm start
+   ```
+4. Abra `http://localhost:3000`.
+
+> ✅ Na sua máquina o servidor tem internet, então use **Rota da IA = "Pelo servidor"**
+> (ou "Auto") — funciona garantido.
+
+## Rodando no preview (Arena) — sem servidor com internet
+
+O sandbox do preview **não tem internet**, então a IA precisa ser chamada pelo
+**seu navegador**. Por isso a rota padrão do preview é **"Via proxy CORS"**
+(disponível no seletor "Rota da IA" nas configurações).
+
+> ⚠️ No modo proxy CORS, a API key trafega por um serviço público de terceiro.
+> **Não recomendo** para uso sério — nesse caso, rode localmente.
+
 ## Provedores de IA: Groq (padrão) e OpenAI
 
 O JARVIS usa a **Groq** por padrão (rápida e gratuita). Também suporta OpenAI.

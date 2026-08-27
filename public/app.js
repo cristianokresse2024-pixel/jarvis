@@ -29,7 +29,7 @@ const els = {
   voiceSelect: $('voiceSelect'),
   voiceEnabled: $('voiceEnabled'),
   autoListen: $('autoListen'),
-  useServerProxy: $('useServerProxy'),
+  connectionMode: $('connectionMode'),
   saveSettings: $('saveSettings'),
   testVoice: $('testVoice'),
 };
@@ -50,8 +50,8 @@ let model = localStorage.getItem('jarvis_model') || 'openai/gpt-oss-120b';
 let voiceURI = localStorage.getItem('jarvis_voice') || '';
 let voiceEnabled = localStorage.getItem('jarvis_voiceEnabled') !== '0';
 let autoListen = localStorage.getItem('jarvis_autoListen') !== '0';
-// true = chamar pelo servidor (proxy) | false = chamar direto do navegador (padrão)
-let useServerProxy = localStorage.getItem('jarvis_useServerProxy') === '1';
+// Rota da IA: 'auto' | 'direct' | 'proxy' | 'server'
+let connectionMode = localStorage.getItem('jarvis_connectionMode') || 'auto';
 
 let history = []; // {role, content}
 let recording = false;
@@ -267,15 +267,68 @@ async function streamViaServer(apiMessages, onDelta) {
   return readSSE(res, onDelta);
 }
 
-// Decide a rota: direto do navegador (padrão) com fallback para o servidor.
+// Chamada via proxy CORS público. É o que permite a IA funcionar no preview:
+// o navegador chama um relay que tem internet e devolve os cabeçalhos CORS.
+// Aviso: a API key trafega por um serviço de terceiro, por isso é opcional.
+const CORS_PROXIES = [
+  'https://api.allorigins.win/raw?url={url}',
+  'https://api.codetabs.com/v1/proxy?quest={url}',
+  'https://corsproxy.io/?{url}',
+];
+
+async function streamViaProxy(apiMessages, onDelta, index = 0) {
+  if (index >= CORS_PROXIES.length) throw new Error('PROXY_FAILED');
+  const endpoint = PROVIDER_ENDPOINTS[provider];
+  const proxyUrl = CORS_PROXIES[index].replace('{url}', encodeURIComponent(endpoint));
+
+  let res;
+  try {
+    res = await fetch(proxyUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        messages: apiMessages,
+        temperature: 0.7,
+        stream: true,
+      }),
+    });
+  } catch (e) {
+    // proxy indisponível -> tenta o próximo
+    return streamViaProxy(apiMessages, onDelta, index + 1);
+  }
+
+  if (!res.ok) {
+    // proxy pode ter rejeitado -> tenta o próximo
+    return streamViaProxy(apiMessages, onDelta, index + 1);
+  }
+
+  const contentType = res.headers.get('content-type') || '';
+  if (contentType.includes('text/html')) {
+    return streamViaProxy(apiMessages, onDelta, index + 1);
+  }
+  return readSSE(res, onDelta);
+}
+
+// Decide a rota conforme a configuração.
 async function streamAnswer(apiMessages, onDelta) {
-  if (!useServerProxy) {
-    try {
-      return await streamDirect(apiMessages, onDelta);
-    } catch (err) {
-      if (err.message !== 'NETWORK') throw err;
-      // direto falhou -> tenta o proxy do servidor
-    }
+  if (connectionMode === 'server') return streamViaServer(apiMessages, onDelta);
+  if (connectionMode === 'direct') return streamDirect(apiMessages, onDelta);
+  if (connectionMode === 'proxy') return streamViaProxy(apiMessages, onDelta);
+
+  // auto: direto -> proxy -> servidor
+  try {
+    return await streamDirect(apiMessages, onDelta);
+  } catch (err) {
+    if (err.message !== 'NETWORK') throw err;
+  }
+  try {
+    return await streamViaProxy(apiMessages, onDelta);
+  } catch (err) {
+    if (err.message !== 'PROXY_FAILED' && err.message !== 'NETWORK') throw err;
   }
   return streamViaServer(apiMessages, onDelta);
 }
@@ -474,7 +527,7 @@ function openSettings() {
   els.model.value = model;
   els.voiceEnabled.checked = voiceEnabled;
   els.autoListen.checked = autoListen;
-  els.useServerProxy.checked = useServerProxy;
+  els.connectionMode.value = connectionMode;
   if (voiceURI) els.voiceSelect.value = voiceURI;
   els.model.disabled = false;
   syncModelForProvider();
@@ -492,7 +545,7 @@ function saveSettings() {
   voiceURI = els.voiceSelect.value;
   voiceEnabled = els.voiceEnabled.checked;
   autoListen = els.autoListen.checked;
-  useServerProxy = els.useServerProxy.checked;
+  connectionMode = els.connectionMode.value;
 
   localStorage.setItem('jarvis_provider', provider);
   localStorage.setItem('jarvis_apiKey', apiKey);
@@ -500,7 +553,7 @@ function saveSettings() {
   localStorage.setItem('jarvis_voice', voiceURI);
   localStorage.setItem('jarvis_voiceEnabled', voiceEnabled ? '1' : '0');
   localStorage.setItem('jarvis_autoListen', autoListen ? '1' : '0');
-  localStorage.setItem('jarvis_useServerProxy', useServerProxy ? '1' : '0');
+  localStorage.setItem('jarvis_connectionMode', connectionMode);
 
   els.voiceState.textContent = voiceEnabled ? 'Pronta' : 'Desativada';
   closeSettings();
@@ -583,4 +636,10 @@ initRecognition();
 if (!apiKey) {
   els.statusText.textContent = 'AGUARDANDO KEY';
   els.statusDot.classList.add('offline');
+}
+
+// No primeiro uso, sugere o modo proxy (funciona no preview).
+if (!localStorage.getItem('jarvis_connectionMode')) {
+  connectionMode = 'proxy';
+  localStorage.setItem('jarvis_connectionMode', connectionMode);
 }
