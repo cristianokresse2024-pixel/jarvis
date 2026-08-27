@@ -133,17 +133,33 @@
       </div>
 
       <div class="field">
-        <label for="apiKey">OpenAI API Key</label>
-        <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
-        <p class="hint">Fica salva apenas no seu navegador (localStorage) e enviada direto à API. Crie uma em <span class="mono">platform.openai.com</span>.</p>
+        <label for="provider">Provedor de IA</label>
+        <select id="provider">
+          <option value="groq">Groq (rápido)</option>
+          <option value="openai">OpenAI</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="apiKey">API Key</label>
+        <input id="apiKey" type="password" placeholder="gsk_... ou sk-..." autocomplete="off" />
+        <p class="hint">Fica salva apenas no seu navegador (localStorage) e enviada direto à API. Crie uma na <span class="mono">console.groq.com</span> (Groq) ou <span class="mono">platform.openai.com</span> (OpenAI).</p>
       </div>
 
       <div class="field">
         <label for="model">Modelo</label>
         <select id="model">
-          <option value="gpt-4o-mini">gpt-4o-mini (rápido)</option>
-          <option value="gpt-4o">gpt-4o (mais inteligente)</option>
-          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+          <optgroup label="Groq">
+            <option value="openai/gpt-oss-120b">gpt-oss-120b (inteligente)</option>
+            <option value="openai/gpt-oss-20b">gpt-oss-20b (rápido)</option>
+            <option value="qwen/qwen3.6-27b">qwen3.6-27b</option>
+            <option value="meta-llama/llama-4-scout-17b-16e-instruct">llama-4-scout</option>
+          </optgroup>
+          <optgroup label="OpenAI">
+            <option value="gpt-4o-mini">gpt-4o-mini (rápido)</option>
+            <option value="gpt-4o">gpt-4o (inteligente)</option>
+            <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+          </optgroup>
         </select>
       </div>
 

@@ -25,16 +25,40 @@ node server.js
 Abra `http://localhost:3000`. (No preview do Arena, o endereço é mostrado
 automaticamente.)
 
-## Configurando a OpenAI
+## Provedores de IA: Groq (padrão) e OpenAI
 
-1. Clique na **engrenagem** (canto superior direito).
-2. Cole sua **OpenAI API key** (crie em https://platform.openai.com).
-3. Escolha o **modelo** (padrão: `gpt-4o-mini`).
-4. Selecione a **voz** do JARVIS e clique em **Salvar**.
+O JARVIS usa a **Groq** por padrão (rápida e gratuita). Também suporta OpenAI.
+A chave pode ser configurada de duas formas:
+
+1. **`.env` (recomendado, seguro)** — crie um arquivo `.env` na raiz:
+
+   ```env
+   GROQ_API_KEY=gsk_...
+   # OPENAI_API_KEY=sk-...
+   ```
+
+   > O `.env` já está no `.gitignore` — **nunca** versione sua chave no git.
+
+2. **No navegador** — clique na **engrenagem** (canto superior direito), escolha
+   o provedor, cole a API key e clique em **Salvar**.
+
+### Modelos sugeridos (Groq)
+
+- `openai/gpt-oss-120b` — mais inteligente (padrão)
+- `openai/gpt-oss-20b` — mais rápido
+- `qwen/qwen3.6-27b`
+- `meta-llama/llama-4-scout-17b-16e-instruct`
+
+> ⚠️ Os modelos `llama-3.1-8b-instant` e `llama-3.3-70b-versatile` foram
+> descontinuados pela Groq em 16/08/2026 — prefira os listados acima.
 
 > 🔐 A API key fica salva apenas no seu navegador (localStorage) e é enviada
-> pelo servidor direto à OpenAI. Por ser uma chave pessoal, **não** compartilhe
-> o link público de alguém que não seja você.
+> pelo servidor, que faz a ponte para o provedor. Por ser uma chave pessoal,
+> **não** compartilhe o link público com alguém que não seja você.
+
+> 🌐 **Nota:** o sandbox de preview deste repo não tem acesso à internet, então
+> as respostas de IA só funcionam quando você rodar o JARVIS em um ambiente
+> com rede (ex.: sua máquina, com `npm start`).
 
 ## Comandos locais (não precisam de IA)
 

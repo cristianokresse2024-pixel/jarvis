@@ -23,6 +23,7 @@ const els = {
   settingsBtn: $('settingsBtn'),
   settingsModal: $('settingsModal'),
   closeSettings: $('closeSettings'),
+  provider: $('provider'),
   apiKey: $('apiKey'),
   model: $('model'),
   voiceSelect: $('voiceSelect'),
@@ -42,8 +43,9 @@ const SYSTEM_PROMPT = [
 ].join(' ');
 
 /* ------------------- state ------------------- */
+let provider = localStorage.getItem('jarvis_provider') || 'groq';
 let apiKey = localStorage.getItem('jarvis_apiKey') || '';
-let model = localStorage.getItem('jarvis_model') || 'gpt-4o-mini';
+let model = localStorage.getItem('jarvis_model') || 'openai/gpt-oss-120b';
 let voiceURI = localStorage.getItem('jarvis_voice') || '';
 let voiceEnabled = localStorage.getItem('jarvis_voiceEnabled') !== '0';
 let autoListen = localStorage.getItem('jarvis_autoListen') !== '0';
@@ -166,7 +168,7 @@ async function streamChat(apiMessages, onDelta) {
     res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ apiKey, model, messages: apiMessages }),
+      body: JSON.stringify({ provider, apiKey, model, messages: apiMessages }),
     });
   } catch (e) {
     throw new Error('Sem conexão com o servidor JARVIS.');
@@ -402,11 +404,14 @@ function queueListening() {
 
 /* ------------------- settings ------------------- */
 function openSettings() {
+  els.provider.value = provider;
   els.apiKey.value = apiKey;
   els.model.value = model;
   els.voiceEnabled.checked = voiceEnabled;
   els.autoListen.checked = autoListen;
   if (voiceURI) els.voiceSelect.value = voiceURI;
+  els.model.disabled = false;
+  syncModelForProvider();
   els.settingsModal.hidden = false;
 }
 
@@ -415,12 +420,14 @@ function closeSettings() {
 }
 
 function saveSettings() {
+  provider = els.provider.value;
   apiKey = els.apiKey.value.trim();
   model = els.model.value;
   voiceURI = els.voiceSelect.value;
   voiceEnabled = els.voiceEnabled.checked;
   autoListen = els.autoListen.checked;
 
+  localStorage.setItem('jarvis_provider', provider);
   localStorage.setItem('jarvis_apiKey', apiKey);
   localStorage.setItem('jarvis_model', model);
   localStorage.setItem('jarvis_voice', voiceURI);
@@ -437,6 +444,24 @@ function saveSettings() {
     els.statusDot.classList.add('offline');
   }
 }
+
+// validate the selection is a model that exists for the chosen provider
+function syncModelForProvider() {
+  const current = els.model.value;
+  els.model.querySelectorAll('optgroup').forEach((og) => {
+    og.style.display = og.label === (provider === 'groq' ? 'Groq' : 'OpenAI') ? '' : 'none';
+  });
+  const anyVisible = Array.from(els.model.options).some((o) => o.value === current && o.closest('optgroup').style.display !== 'none');
+  if (!anyVisible) {
+    // pick first visible option
+    const first = Array.from(els.model.options).find((o) => o.closest('optgroup').style.display !== 'none');
+    if (first) els.model.value = first.value;
+  }
+}
+els.provider.addEventListener('change', () => {
+  provider = els.provider.value;
+  syncModelForProvider();
+});
 
 /* ------------------- wire up ------------------- */
 els.sendBtn.addEventListener('click', () => sendMessage(els.input.value));

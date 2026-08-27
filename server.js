@@ -6,7 +6,35 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const PORT = Number(process.env.PORT) || 3000;
-const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
+
+/* ---- simple .env loader (no dependencies) ---- */
+try {
+  const envFile = fs.readFileSync(path.join(__dirname, '.env'), 'utf8');
+  for (const rawLine of envFile.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('#')) continue;
+    const eq = line.indexOf('=');
+    if (eq === -1) continue;
+    const k = line.slice(0, eq).trim();
+    const v = line.slice(eq + 1).trim().replace(/^['"]|['"]$/g, '');
+    if (k && !process.env[k]) process.env[k] = v;
+  }
+} catch {
+  /* no .env file, ignore */
+}
+
+const PROVIDERS = {
+  openai: {
+    url: 'https://api.openai.com/v1/chat/completions',
+    envKey: 'OPENAI_API_KEY',
+    defaultModel: 'gpt-4o-mini',
+  },
+  groq: {
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    envKey: 'GROQ_API_KEY',
+    defaultModel: 'openai/gpt-oss-120b',
+  },
+};
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -83,31 +111,45 @@ async function handleChat(req, res) {
     return sendJson(res, 400, { error: 'Requisição inválida.' });
   }
 
-  const apiKey = (body.apiKey || '').trim();
+  const providerName = (body.provider || 'groq').trim().toLowerCase();
+  const provider = PROVIDERS[providerName] || PROVIDERS.groq;
+  const apiKey = (body.apiKey || '').trim() || (process.env[provider.envKey] || '').trim();
   const messages = Array.isArray(body.messages) ? body.messages : [];
-  const model = (body.model || 'gpt-4o-mini').trim();
+  const model = (body.model || provider.defaultModel).trim();
   const temperature = Number.isFinite(body.temperature) ? body.temperature : 0.7;
 
   if (!apiKey) {
-    return sendJson(res, 400, { error: 'Configure sua OpenAI API key nas configurações (ícone de engrenagem).' });
+    return sendJson(res, 400, {
+      error: providerName === 'openai'
+        ? 'Configure sua OpenAI API key nas configurações (ícone de engrenagem).'
+        : 'Configure sua Groq API key nas configurações (ícone de engrenagem) ou no arquivo .env.',
+    });
   }
   if (messages.length === 0) {
     return sendJson(res, 400, { error: 'Nenhuma mensagem para processar.' });
   }
 
-  const upstream = await fetch(OPENAI_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model,
-      messages,
-      temperature,
-      stream: true,
-    }),
-  });
+  let upstream;
+  try {
+    upstream = await fetch(provider.url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        messages,
+        temperature,
+        stream: true,
+      }),
+    });
+  } catch (err) {
+    // Network / DNS / TLS failure — the OpenAI/Groq endpoint could not be reached.
+    return sendJson(res, 503, {
+      error: 'Não foi possível conectar ao provedor de IA. Verifique se este ambiente tem acesso à internet, ou rode o JARVIS localmente.',
+    });
+  }
 
   if (!upstream.ok) {
     // Try to extract a meaningful error message from OpenAI
