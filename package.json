@@ -1,0 +1,14 @@
+{
+  "name": "jarvis",
+  "version": "1.0.0",
+  "description": "JARVIS - assistente pessoal com voz e IA (Homem de Ferro style)",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

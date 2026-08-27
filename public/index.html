@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J.A.R.V.I.S.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <div class="app">
+    <!-- ===================== HEADER ===================== -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <span class="brand-name">J.A.R.V.I.S.</span>
+        <span class="brand-sub">Just A Rather Very Intelligent System</span>
+      </div>
+
+      <div class="topbar-right">
+        <div class="stat">
+          <span class="stat-label">STATUS</span>
+          <span id="statusDot" class="status-dot"></span>
+          <span id="statusText" class="status-text">ONLINE</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">TEMPO</span>
+          <span id="clock" class="mono">--:--</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">DATA</span>
+          <span id="date" class="mono">--/--/----</span>
+        </div>
+        <button id="settingsBtn" class="icon-btn" title="Configurações (API key)">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="layout">
+      <!-- LEFT: arc reactor + voice status -->
+      <aside class="left-panel">
+        <div class="reactor-wrap">
+          <div class="reactor" id="reactor">
+            <div class="ring ring-outer"></div>
+            <div class="ring ring-mid"></div>
+            <div class="ring ring-inner"></div>
+            <div class="core"></div>
+            <svg class="spinner" viewBox="0 0 200 200">
+              <circle class="spinner-dash" cx="100" cy="100" r="92" />
+            </svg>
+          </div>
+          <div class="reactor-status" id="reactorStatus">STANDBY</div>
+        </div>
+
+        <div class="voice-panel">
+          <div class="voice-row">
+            <span class="voice-tag">MICROFONE</span>
+            <span id="micState" class="mono">Ocioso</span>
+          </div>
+          <div class="voice-row">
+            <span class="voice-tag">VOZ</span>
+            <span id="voiceState" class="mono">Pronta</span>
+          </div>
+          <div class="level-bar" id="levelBar"><span class="level-fill" id="levelFill"></span></div>
+        </div>
+
+        <div class="quick-actions">
+          <span class="panel-title">AÇÕES RÁPIDAS</span>
+          <button class="chip" data-cmd="hora">🕐 Que horas são?</button>
+          <button class="chip" data-cmd="data">📅 Data de hoje</button>
+          <button class="chip" data-cmd="piada">😂 Uma piada</button>
+          <button class="chip" data-cmd="google">🌐 Abrir Google</button>
+          <button class="chip" data-cmd="limpar">🧹 Limpar conversa</button>
+        </div>
+      </aside>
+
+      <!-- RIGHT: chat -->
+      <section class="right-panel">
+        <div class="chat" id="chat">
+          <div class="welcome" id="welcome">
+            <div class="welcome-glow"></div>
+            <h1>Bem-vindo, senhor.</h1>
+            <p>
+              O J.A.R.V.I.S. está pronto para servi-lo. Fale comigo através do
+              microfone ou digite abaixo. Configure sua OpenAI API key para
+              destravar a inteligência completa.
+            </p>
+          </div>
+        </div>
+
+        <div class="composer">
+          <button id="micBtn" class="mic-btn" title="Falar">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+              <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z"></path>
+              <path d="M19 11a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.92V20H8a1 1 0 0 0 0 2h8a1 1 0 0 0 0-2h-3v-2.08A7 7 0 0 0 19 11z"></path>
+            </svg>
+          </button>
+          <textarea
+            id="input"
+            class="input"
+            rows="1"
+            placeholder="Fale ou escreva um comando, senhor..."
+            autocomplete="off"
+          ></textarea>
+          <button id="sendBtn" class="send-btn" title="Enviar">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+            </svg>
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================== SETTINGS MODAL ===================== -->
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <div class="modal">
+      <div class="modal-head">
+        <h2>Configurações</h2>
+        <button id="closeSettings" class="icon-btn ghost">✕</button>
+      </div>
+
+      <div class="field">
+        <label for="apiKey">OpenAI API Key</label>
+        <input id="apiKey" type="password" placeholder="sk-..." autocomplete="off" />
+        <p class="hint">Fica salva apenas no seu navegador (localStorage) e enviada direto à API. Crie uma em <span class="mono">platform.openai.com</span>.</p>
+      </div>
+
+      <div class="field">
+        <label for="model">Modelo</label>
+        <select id="model">
+          <option value="gpt-4o-mini">gpt-4o-mini (rápido)</option>
+          <option value="gpt-4o">gpt-4o (mais inteligente)</option>
+          <option value="gpt-4.1-mini">gpt-4.1-mini</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="voiceSelect">Voz do JARVIS</label>
+        <select id="voiceSelect"></select>
+      </div>
+
+      <label class="toggle">
+        <input type="checkbox" id="voiceEnabled" checked />
+        <span class="toggle-label">Respostas faladas</span>
+      </label>
+
+      <label class="toggle">
+        <input type="checkbox" id="autoListen" checked />
+        <span class="toggle-label">Continuar ouvindo após responder</span>
+      </label>
+
+      <div class="modal-actions">
+        <button id="testVoice" class="btn ghost">Testar voz</button>
+        <button id="saveSettings" class="btn primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
