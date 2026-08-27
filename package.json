@@ -14,7 +14,8 @@
   },
   "pkg": {
     "assets": [
-      "public/**/*"
+      "public/**/*",
+      "assets/icon.ico"
     ],
     "targets": [
       "node22-win-x64"

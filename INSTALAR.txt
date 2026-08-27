@@ -14,19 +14,25 @@ Você tem 3 formas de usar o JARVIS. Escolha a que preferir.
                      (Groq / Rota da IA = "Auto" ou "Via proxy CORS").
 
 ------------------------------------------------------------
- OPÇÃO 2 — GERAR O JARVIS.EXE (instalável, sem precisar de Node)
+ OPÇÃO 2 — GERAR O JARVIS.EXE E O INSTALADOR (com ícone)
 ------------------------------------------------------------
  O .exe embute tudo: abre o navegador sozinho e funciona sem
- instalar Node.js no computador.
+ instalar Node.js no computador. Inclui o ícone do reator.
 
  Passos (no Windows):
   1. Instale o Node.js 18+  ->  https://nodejs.org
-  2. Dê DUPLO CLIQUE em  build-exe.bat
+  2. Dê DUPLO CLIQUE em  build-all.bat   (ou build-exe.bat p/ só o .exe)
   3. Aguarde (na 1ª vez baixa o runtime e demora alguns minutos)
-  4. Pronto: o arquivo  dist\jarvis.exe  foi criado
-  5. Copie jarvis.exe para onde quiser e dê DUPLO CLIQUE
+  4. Resultados em  dist\ :
+       - jarvis.exe            (executável simples)
+       - JARVIS-Setup.exe      (instalador com atalhos e desinstalador)
+  5. Distribua o  JARVIS-Setup.exe  — de duplo clique para instalar.
 
- Na 1ª execução do .exe, coloque sua API key na engrenagem
+ -> Instalador cria atalhos no Menu Iniciar, Desktop e um desinstalador.
+ -> O instalador usa NSIS (https://nsis.sourceforge.io/download).
+    Se o NSIS não estiver instalado, o build exibe instruções.
+
+ Na 1ª execução, coloque sua API key na engrenagem
  (Groq / Rota da IA = "Pelo servidor"). Ela fica salva no navegador.
 
 ------------------------------------------------------------
