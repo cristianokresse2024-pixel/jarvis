@@ -8,9 +8,11 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
-    "build:win": "pkg . --targets node22-win-x64 --output dist/jarvis.exe",
+    "build:win": "pkg . --targets node22-win-x64 --output dist/jarvis.exe && node set-icon.js dist/jarvis.exe assets/icon.ico",
+    "build:win18": "pkg . --targets node18-win-x64 --output dist/jarvis.exe && node set-icon.js dist/jarvis.exe assets/icon.ico",
     "build:linux": "pkg . --targets node22-linux-x64 --output dist/jarvis-linux",
-    "build:mac": "pkg . --targets node22-macos-x64 --output dist/jarvis-mac"
+    "build:mac": "pkg . --targets node22-macos-x64 --output dist/jarvis-mac",
+    "build:installer": "makensis installer.nsi"
   },
   "pkg": {
     "assets": [
@@ -26,6 +28,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@yao-pkg/pkg": "^6.22.0"
+    "@yao-pkg/pkg": "^6.22.0",
+    "rcedit": "^5.0.2"
   }
 }
