@@ -1,0 +1,57 @@
+============================================================
+ J.A.R.V.I.S. — Guia rápido de instalação
+============================================================
+
+Você tem 3 formas de usar o JARVIS. Escolha a que preferir.
+
+------------------------------------------------------------
+ OPÇÃO 1 — USAR AGORA, SEM INSTALAR NADA (mais fácil)
+------------------------------------------------------------
+ Arquivo:            dist\JARVIS.html
+ Como usar:          dê DUPLO CLIQUE no arquivo. Ele abre no navegador.
+ Requisitos:         nada (só internet para a IA).
+ Lembrete:           ao abrir, coloque sua API key na engrenagem
+                     (Groq / Rota da IA = "Auto" ou "Via proxy CORS").
+
+------------------------------------------------------------
+ OPÇÃO 2 — GERAR O JARVIS.EXE (instalável, sem precisar de Node)
+------------------------------------------------------------
+ O .exe embute tudo: abre o navegador sozinho e funciona sem
+ instalar Node.js no computador.
+
+ Passos (no Windows):
+  1. Instale o Node.js 18+  ->  https://nodejs.org
+  2. Dê DUPLO CLIQUE em  build-exe.bat
+  3. Aguarde (na 1ª vez baixa o runtime e demora alguns minutos)
+  4. Pronto: o arquivo  dist\jarvis.exe  foi criado
+  5. Copie jarvis.exe para onde quiser e dê DUPLO CLIQUE
+
+ Na 1ª execução do .exe, coloque sua API key na engrenagem
+ (Groq / Rota da IA = "Pelo servidor"). Ela fica salva no navegador.
+
+------------------------------------------------------------
+ OPÇÃO 3 — RODAR COM NODE (sem gerar o .exe)
+------------------------------------------------------------
+  1. Instale o Node.js 18+  ->  https://nodejs.org
+  2. Dê DUPLO CLIQUE em  start.bat   (ou rodar "npm start")
+  3. Abra  http://localhost:3000
+
+------------------------------------------------------------
+ CONFIGURAR A API KEY (Groq)
+------------------------------------------------------------
+  - Clique na engrenagem (canto superior direito)
+  - Provedor: Groq
+  - Cole sua chave (começa com gsk_)
+  - Rota da IA: escolha conforme o modo
+  - Salvar
+
+  A chave fica salva APENAS no seu navegador (localStorage).
+  NUNCA é enviada/gravada em lugar algum além do provedor de IA.
+
+------------------------------------------------------------
+ SEGURANÇA
+------------------------------------------------------------
+  - O arquivo .env (com sua chave) NÃO é distribuído; use .env.example.
+  - No modo "Via proxy CORS" a chave passa por um serviço de terceiro,
+    por isso prefira "Pelo servidor" (opção 2/3) para uso sério.
+============================================================

@@ -54,6 +54,20 @@ automaticamente.)
 > ✅ Na sua máquina o servidor tem internet, então use **Rota da IA = "Pelo servidor"**
 > (ou "Auto") — funciona garantido.
 
+## Instalação em 3 opções
+
+Você pode usar o JARVIS de 3 formas (veja o arquivo **`INSTALAR.txt`**):
+
+1. **Sem instalar nada** — abra o arquivo **`JARVIS.html`** (duplo clique).
+   Funciona direto no navegador, basta colocar sua API key na engrenagem.
+2. **Gerar o `jarvis.exe`** — rode **`build-exe.bat`** (na sua máquina).
+   Ele cria um `.exe` que abre sozinho (embute o Node, não precisa instalar
+   nada no PC).
+3. **Rodar com Node** — **`start.bat`** ou `npm start`, abra `localhost:3000`.
+
+> O pacote de download inclui `JARVIS.html`, `build-exe.bat`, `start.bat` e
+> o código-fonte completo.
+
 ## Gerar o JARVIS.exe
 
 <details>
