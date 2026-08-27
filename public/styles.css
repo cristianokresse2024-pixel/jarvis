@@ -579,6 +579,13 @@ body {
 }
 .toggle input:checked + .toggle-label::before { background: rgba(63, 208, 255, 0.4); border-color: var(--cyan); }
 .toggle input:checked + .toggle-label::after { left: 14px; background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+.toggle-sub {
+  display: block;
+  margin-left: 34px;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
 
 .modal-actions {
   display: flex;

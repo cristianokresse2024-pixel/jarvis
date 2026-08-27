@@ -29,6 +29,7 @@ const els = {
   voiceSelect: $('voiceSelect'),
   voiceEnabled: $('voiceEnabled'),
   autoListen: $('autoListen'),
+  useServerProxy: $('useServerProxy'),
   saveSettings: $('saveSettings'),
   testVoice: $('testVoice'),
 };
@@ -49,6 +50,8 @@ let model = localStorage.getItem('jarvis_model') || 'openai/gpt-oss-120b';
 let voiceURI = localStorage.getItem('jarvis_voice') || '';
 let voiceEnabled = localStorage.getItem('jarvis_voiceEnabled') !== '0';
 let autoListen = localStorage.getItem('jarvis_autoListen') !== '0';
+// true = chamar pelo servidor (proxy) | false = chamar direto do navegador (padrão)
+let useServerProxy = localStorage.getItem('jarvis_useServerProxy') === '1';
 
 let history = []; // {role, content}
 let recording = false;
@@ -161,29 +164,15 @@ function handleLocal(text) {
   return null;
 }
 
-/* ------------------- openai streaming ------------------- */
-async function streamChat(apiMessages, onDelta) {
-  let res;
-  try {
-    res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ provider, apiKey, model, messages: apiMessages }),
-    });
-  } catch (e) {
-    throw new Error('Sem conexão com o servidor JARVIS.');
-  }
+/* ------------------- IA streaming ------------------- */
+const PROVIDER_ENDPOINTS = {
+  groq: 'https://api.groq.com/openai/v1/chat/completions',
+  openai: 'https://api.openai.com/v1/chat/completions',
+};
 
-  if (!res.ok) {
-    let msg = 'Erro na comunicação com a API.';
-    try {
-      const j = await res.json();
-      msg = j.error || msg;
-    } catch {}
-    throw new Error(msg);
-  }
-
-  const reader = res.body.getReader();
+// Lê um response body em stream de Server-Sent Events (SSE) da Groq/OpenAI.
+async function readSSE(response, onDelta) {
+  const reader = response.body.getReader();
   const decoder = new TextDecoder('utf-8');
   let buffer = '';
   let full = '';
@@ -215,6 +204,82 @@ async function streamChat(apiMessages, onDelta) {
   return full;
 }
 
+// Chamada DIRETA do navegador para o provedor. É o que funciona no preview,
+// pois o sandbox do servidor não tem internet, mas o SEU navegador tem.
+// Observação: apenas funciona se o provedor permitir CORS (Groq/OpenAI aceitam).
+async function streamDirect(apiMessages, onDelta) {
+  const endpoint = PROVIDER_ENDPOINTS[provider];
+  let res;
+  try {
+    res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        messages: apiMessages,
+        temperature: 0.7,
+        stream: true,
+      }),
+    });
+  } catch (e) {
+    // Falha de rede / CORS do navegador -> sinaliza para tentar o proxy do servidor.
+    throw new Error('NETWORK');
+  }
+
+  if (!res.ok) {
+    let msg = `Erro da API (status ${res.status}).`;
+    try {
+      const j = await res.json();
+      msg = j?.error?.message || msg;
+    } catch {}
+    if (res.status === 401) msg = 'API key inválida ou expirada. Verifique nas configurações.';
+    if (res.status === 404 || res.status === 400) msg = 'Modelo inválido para este provedor. Selecione outro modelo nas configurações.';
+    throw new Error(msg);
+  }
+  return readSSE(res, onDelta);
+}
+
+// Chamada via proxy do servidor (equivale ao provedor, mas passa pelo Node).
+// Útil quando o ambiente de hospedagem do servidor tem internet (ex.: rodando local).
+async function streamViaServer(apiMessages, onDelta) {
+  let res;
+  try {
+    res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ provider, apiKey, model, messages: apiMessages }),
+    });
+  } catch (e) {
+    throw new Error('Sem conexão com o servidor JARVIS.');
+  }
+
+  if (!res.ok) {
+    let msg = 'Erro na comunicação com a API.';
+    try {
+      const j = await res.json();
+      msg = j.error || msg;
+    } catch {}
+    throw new Error(msg);
+  }
+  return readSSE(res, onDelta);
+}
+
+// Decide a rota: direto do navegador (padrão) com fallback para o servidor.
+async function streamAnswer(apiMessages, onDelta) {
+  if (!useServerProxy) {
+    try {
+      return await streamDirect(apiMessages, onDelta);
+    } catch (err) {
+      if (err.message !== 'NETWORK') throw err;
+      // direto falhou -> tenta o proxy do servidor
+    }
+  }
+  return streamViaServer(apiMessages, onDelta);
+}
+
 /* ------------------- send flow ------------------- */
 function sendMessage(raw) {
   const text = (raw || '').trim();
@@ -241,7 +306,7 @@ function sendMessage(raw) {
   const apiMessages = [{ role: 'system', content: SYSTEM_PROMPT }, ...history];
   const bubble = addBubble('assistant', '', true);
 
-  streamChat(apiMessages, (full) => bubble.setText(full))
+  streamAnswer(apiMessages, (full) => bubble.setText(full))
     .then((full) => {
       bubble.finish(full);
       history.push({ role: 'assistant', content: full });
@@ -409,6 +474,7 @@ function openSettings() {
   els.model.value = model;
   els.voiceEnabled.checked = voiceEnabled;
   els.autoListen.checked = autoListen;
+  els.useServerProxy.checked = useServerProxy;
   if (voiceURI) els.voiceSelect.value = voiceURI;
   els.model.disabled = false;
   syncModelForProvider();
@@ -426,6 +492,7 @@ function saveSettings() {
   voiceURI = els.voiceSelect.value;
   voiceEnabled = els.voiceEnabled.checked;
   autoListen = els.autoListen.checked;
+  useServerProxy = els.useServerProxy.checked;
 
   localStorage.setItem('jarvis_provider', provider);
   localStorage.setItem('jarvis_apiKey', apiKey);
@@ -433,6 +500,7 @@ function saveSettings() {
   localStorage.setItem('jarvis_voice', voiceURI);
   localStorage.setItem('jarvis_voiceEnabled', voiceEnabled ? '1' : '0');
   localStorage.setItem('jarvis_autoListen', autoListen ? '1' : '0');
+  localStorage.setItem('jarvis_useServerProxy', useServerProxy ? '1' : '0');
 
   els.voiceState.textContent = voiceEnabled ? 'Pronta' : 'Desativada';
   closeSettings();
